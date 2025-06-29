@@ -1,16 +1,10 @@
 # 🌍 Travel Booking Portal
 
+[Live Demo 🚀](https://travel-booking-partner.vercel.app/)
+
 A modern and responsive travel booking platform built using **Next.js App Router**, **Tailwind CSS**, and **Firebase Authentication**. This project allows users to register, log in, search for flights, fill in passenger information, and confirm bookings — all with an intuitive UI and clean UX flow.
 
----
 
-## 📸 Preview
-
-![Login Preview](public/images/login-preview.png)
-
-<!-- Replace with actual screenshot path or comment out if not available -->
-
----
 
 ## 🧭 Features
 
@@ -38,6 +32,7 @@ A modern and responsive travel booking platform built using **Next.js App Router
 ---
 
 ## 📁 Project Structure (App Router)
+
 travel-booking-portal/
 ├── app/
 │ ├── layout.jsx
@@ -70,3 +65,4 @@ travel-booking-portal/
 ```bash
 git clone https://github.com/your-username/travel-booking-portal.git
 cd travel-booking-portal
+```
