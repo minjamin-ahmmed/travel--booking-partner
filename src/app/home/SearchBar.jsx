@@ -26,7 +26,9 @@ const SearchBar = () => {
     return today.toISOString().split("T")[0];
   });
 
-  const [guests, setGuests] = useState(1);
+  const [adults, setAdults] = useState(1);
+
+  const [children, setChildren] = useState(0);
 
   const handleSearch = () => {
     const params = new URLSearchParams({
@@ -34,14 +36,15 @@ const SearchBar = () => {
       destination,
       departureDate,
       returnDate,
-      guests,
+      adults: adults.toString(),
+      children: children.toString(),
     });
     router.push(`/search?${params.toString()}`);
   };
 
   return (
-    <div className="bg-white shadow rounded-3xl p-10 w-full max-w-6xl mx-auto mt-16 border border-rose-200">
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+    <div className="bg-white/90 shadow rounded-3xl p-10 w-full max-w-6xl mx-auto mt-16 border border-rose-200">
+      <div className="grid grid-cols-1 md:grid-cols-6 gap-8">
         {/* Origin */}
         <div className="relative">
           <label className="text-sm text-gray-700 font-semibold mb-1 block">
@@ -141,8 +144,28 @@ const SearchBar = () => {
             <input
               type="number"
               min={1}
-              value={guests}
-              onChange={(e) => setGuests(e.target.value)}
+              value={adults}
+              onChange={(e) => setAdults(e.target.value)}
+              className="w-full pl-10 border border-rose-300 rounded-full px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-rose-500"
+            />
+          </div>
+        </div>
+
+        {/* Children */}
+        <div className="relative">
+          <label className="text-sm text-gray-700 font-semibold mb-1 block">
+            Number of Children
+          </label>
+          <div className="relative">
+            <Users
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-rose-400"
+              size={18}
+            />
+            <input
+              type="number"
+              min={0}
+              value={children}
+              onChange={(e) => setChildren(e.target.value)}
               className="w-full pl-10 border border-rose-300 rounded-full px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-rose-500"
             />
           </div>

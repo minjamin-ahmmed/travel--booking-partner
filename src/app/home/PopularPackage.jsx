@@ -104,6 +104,9 @@ const PopularPackage = () => {
       <h2 className="text-3xl font-bold mb-6 text-center text-rose-500">
         Popular Packages
       </h2>
+      <p className="text-center text-gray-500 mb-10">
+        Discover our most popular travel packages
+      </p>
 
       <Slider {...settings}>
         {packages.map(({ id, title, duration, imageUrl }) => (

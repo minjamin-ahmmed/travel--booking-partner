@@ -15,7 +15,7 @@ const Navbar = () => {
     { name: "Discover", href: "#discover" },
     { name: "Destination", href: "#destination" },
     { name: "Trip Plan", href: "#trip-plan" },
-    { name: "About Us", href: "#about" },
+    { name: "About Us", href: "aboutus" },
   ];
 
   const handleLogout = async () => {
@@ -39,65 +39,63 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 bg-white text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <Link href="/" className="text-2xl font-bold text-rose-500">
-              Trivella
-            </Link>
+      <header className="absolute top-12 left-1/2 transform -translate-x-1/2 max-w-6xl w-full bg-white shadow-lg rounded-full z-50 px-6 py-3 flex flex-col">
+        <div className="flex justify-between items-center w-full">
+          {/* Logo */}
+          <Link href="/" className="text-2xl font-bold text-rose-500">
+            Trivella
+          </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden md:flex gap-8 items-center">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-rose-500  hover:text-pink-600 transition"
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex gap-6 items-center">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-rose-500 hover:text-pink-600 transition"
+              >
+                {item.name}
+              </Link>
+            ))}
+
+            {user ? (
+              <div className="flex items-center gap-4">
+                <span className="text-gray-700 font-medium">{shortName}</span>
+                <button
+                  onClick={() => setShowConfirm(true)}
+                  className="bg-red-500 text-white px-4 py-2 rounded-full font-medium hover:bg-red-600 transition"
                 >
-                  {item.name}
-                </Link>
-              ))}
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <Link
+                href="/login"
+                className="bg-rose-500 text-white px-4 py-2 rounded-full font-medium hover:bg-rose-600 transition"
+              >
+                Login
+              </Link>
+            )}
+          </nav>
 
-              {user ? (
-                <div className="flex items-center gap-4">
-                  <span className="text-gray-700 font-medium">{shortName}</span>
-                  <button
-                    onClick={() => setShowConfirm(true)}
-                    className="bg-red-500 text-white px-4 py-2 rounded-full font-medium hover:bg-red-500 transition"
-                  >
-                    Logout
-                  </button>
-                </div>
-              ) : (
-                <Link
-                  href="/login"
-                  className="bg-rose-500 text-white px-4 py-2 rounded-full font-medium hover:bg-rose-600 transition"
-                >
-                  Login
-                </Link>
-              )}
-            </nav>
-
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden text-gray-700 focus:outline-none"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-gray-700 focus:outline-none"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
         {/* Mobile Menu Dropdown */}
         {isOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200">
-            <div className="px-4 pt-4 pb-6 flex flex-col gap-4">
+          <div className="md:hidden bg-white border-t border-gray-200 mt-3 rounded-b-3xl shadow-md">
+            <div className="px-6 py-4 flex flex-col gap-3">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 hover:text-rose-500 transition"
+                  className="text-gray-700 hover:text-rose-500 transition py-2"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
@@ -105,7 +103,7 @@ const Navbar = () => {
               ))}
 
               {user ? (
-                <div className="flex flex-col items-start gap-2">
+                <div className="flex flex-col items-start gap-2 mt-2">
                   <span className="text-gray-700 font-medium">{shortName}</span>
                   <button
                     onClick={() => {
@@ -120,7 +118,7 @@ const Navbar = () => {
               ) : (
                 <Link
                   href="/login"
-                  className="bg-pink-500 text-white px-4 py-2 rounded-lg text-center font-medium hover:bg-pink-700 transition"
+                  className="bg-pink-500 text-white px-4 py-2 rounded-lg text-center font-medium hover:bg-pink-700 transition mt-3"
                   onClick={() => setIsOpen(false)}
                 >
                   Get Started
@@ -141,13 +139,13 @@ const Navbar = () => {
             <div className="flex justify-center gap-4 mt-6">
               <button
                 onClick={() => setShowConfirm(false)}
-                className="px-4 py-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 transition"
+                className="px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition"
               >
                 Cancel
               </button>
               <button
                 onClick={handleLogout}
-                className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition"
+                className="px-4 py-2 rounded-full bg-red-500 text-white hover:bg-red-600 transition"
               >
                 Logout
               </button>

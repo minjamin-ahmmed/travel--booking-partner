@@ -9,7 +9,7 @@ const HeroSection = () => {
           src="/hero.png"
           alt="Hero Section"
           fill
-          className="object-cover brightness-110"
+          className="object-cover brightness-90"
           priority
         />
       </div>

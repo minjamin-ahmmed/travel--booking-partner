@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDwfJ8EY16sIFMitvu0Y8ZnLC5BjabH6s4",
-  authDomain: "travel-portal-fc176.firebaseapp.com",
-  projectId: "travel-portal-fc176",
-  storageBucket: "travel-portal-fc176.firebasestorage.app",
-  messagingSenderId: "624598368656",
-  appId: "1:624598368656:web:0f972608f99c90182eb315",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
